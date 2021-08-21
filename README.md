@@ -11,4 +11,5 @@ build with:
 Source:
 ngl please don't judge my old (and current) awful code
 https://github.com/alfarom256/lsassdump
+
 https://skelsec.medium.com/duping-av-with-handles-537ef985eb03
