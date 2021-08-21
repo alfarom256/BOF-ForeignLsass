@@ -2,6 +2,8 @@
 
 You must be admin or system, blah blah blah.
 
+This entire thing is predicated on another process having an open handle to LSASS, and you being able to open a handle to that process and duplicate their lsass' handle.
+
 build with:
 ```
 	x86_64-w64-mingw32-gcc -c foreign_lsass.c -o foreign_lsass.x64.o
