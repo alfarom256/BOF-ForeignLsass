@@ -1,7 +1,7 @@
 #include <windows.h>
 #include <winternl.h>
-#include <TlHelp32.h>
-#include <DbgHelp.h>
+#include <tlhelp32.h>
+#include <dbghelp.h>
 #include <intrin.h>
 #include "beacon.h"
 
